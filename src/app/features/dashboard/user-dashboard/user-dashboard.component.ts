@@ -42,17 +42,17 @@ export class UserDashboardComponent implements OnInit {
   }
 
   updateChart() {
-    const roleCount = {
-      Admin: 0,
-      Editor: 0,
-      Viewer: 0,
-    };
+    const roleCount: Record<'Admin' | 'Editor' | 'Viewer', number> = {
+  Admin: 0,
+  Editor: 0,
+  Viewer: 0,
+};
 
     this.users.forEach((user) => {
-      if (roleCount[user.role] !== undefined) {
-        roleCount[user.role]++;
-      }
-    });
+  if (user.role in roleCount) {
+    roleCount[user.role as keyof typeof roleCount]++;
+  }
+});
 
     const canvas = document.getElementById('roleChart') as HTMLCanvasElement;
     if (!canvas) return;
