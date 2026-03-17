@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../../core/services/user.service';
 import { User } from '../../../shared/models/user.model';
+import Chart from 'chart.js/auto';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -40,9 +41,7 @@ export class UserDashboardComponent implements OnInit {
     this.closeForm();
   }
 
-  async updateChart() {
-    const { Chart } = await import('chart.js/auto');
-
+  updateChart() {
     const roleCount = {
       Admin: 0,
       Editor: 0,
