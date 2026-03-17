@@ -1,0 +1,53 @@
+<div class="bg-white p-6 rounded-xl shadow w-100">
+  <h2 class="text-xl font-semibold mb-4">Add User</h2>
+
+  <form (ngSubmit)="submit()" [formGroup]="form">
+
+    <!-- NAME -->
+    <input
+      type="text"
+      placeholder="Name"
+      formControlName="name"
+      class="w-full border rounded-lg px-3 h-12 mb-3 focus:outline-none focus:ring-2 focus:ring-[#1c4980]"
+    />
+
+    <!-- EMAIL -->
+    <input
+      type="email"
+      placeholder="Email"
+      formControlName="email"
+      class="w-full border rounded-lg px-3 h-12 mb-3 focus:outline-none focus:ring-2 focus:ring-[#1c4980]"
+    />
+
+    <!-- ROLE -->
+    <select
+      formControlName="role"
+      class="w-full border rounded-lg px-3 h-12 mb-4 focus:outline-none focus:ring-2 focus:ring-[#1c4980]"
+    >
+      <option value="">Select Role</option>
+      <option value="Admin">Admin</option>
+      <option value="Editor">Editor</option>
+      <option value="Viewer">Viewer</option>
+    </select>
+
+    <!-- BUTTONS -->
+    <div class="flex justify-end gap-3">
+      <button
+        type="button"
+        (click)="close.emit()"
+        class="h-12 px-4 border rounded-lg"
+      >
+        Cancel
+      </button>
+
+      <button
+        type="submit"
+        [disabled]="form.invalid"
+        class="h-12 px-5 bg-[#1c4980] text-white rounded-lg disabled:opacity-50"
+      >
+        Save
+      </button>
+    </div>
+
+  </form>
+</div>

@@ -1,0 +1,62 @@
+<div class="p-6 bg-gray-100 min-h-screen">
+
+  <!-- HEADER -->
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-bold">User Dashboard</h1>
+
+    <button
+      (click)="openForm()"
+      class="bg-[#1c4980] text-white px-6 h-12 rounded-lg"
+    >
+      Add User
+    </button>
+  </div>
+
+  <!-- MAIN GRID -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <!-- TABLE -->
+    <div class="bg-white rounded-xl shadow p-4">
+      <h2 class="font-semibold mb-4">Users</h2>
+
+      <table class="w-full">
+        <thead class="bg-[#383838] text-white">
+          <tr>
+            <th class="p-3 text-left">Name</th>
+            <th class="p-3 text-left">Email</th>
+            <th class="p-3 text-left">Role</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let user of users" class="border-t">
+            <td class="p-3">{{ user.name }}</td>
+            <td class="p-3">{{ user.email }}</td>
+            <td class="p-3">{{ user.role }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CHART -->
+    <div class="bg-white rounded-xl shadow p-4 flex flex-col items-center">
+      <h2 class="font-semibold mb-4">Role Distribution</h2>
+
+      <div class="w-[280px] h-[280px]">
+        <canvas id="roleChart"></canvas>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MODAL -->
+  <div
+  *ngIf="showForm"
+  class="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50"
+>
+  <ng-container *ngIf="formComponent">
+    <ng-container *ngComponentOutlet="formComponent"></ng-container>
+  </ng-container>
+</div>
+
+</div>
