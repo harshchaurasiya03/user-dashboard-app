@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../../core/services/user.service';
 import { User } from '../../../shared/models/user.model';
+import { UserFormComponent } from '../../user-form/user-form.component';
 import Chart from 'chart.js/auto';
 
 @Component({
   selector: 'app-user-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, UserFormComponent],
   templateUrl: './user-dashboard.component.html',
 })
 export class UserDashboardComponent implements OnInit {
@@ -15,7 +16,6 @@ export class UserDashboardComponent implements OnInit {
   showForm = false;
   chart: any;
 
-  formComponent: any = null;
 
   constructor(private userService: UserService) {}
 
@@ -26,11 +26,9 @@ export class UserDashboardComponent implements OnInit {
     });
   }
 
-  async openForm() {
-    const { UserFormComponent } = await import('../../user-form/user-form.component');
-    this.formComponent = UserFormComponent;
-    this.showForm = true;
-  }
+  openForm() {
+  this.showForm = true;
+}
 
   closeForm() {
     this.showForm = false;

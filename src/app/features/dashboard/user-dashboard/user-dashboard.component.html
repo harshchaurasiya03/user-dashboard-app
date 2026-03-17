@@ -54,9 +54,10 @@
   *ngIf="showForm"
   class="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50"
 >
-  <ng-container *ngIf="formComponent">
-    <ng-container *ngComponentOutlet="formComponent"></ng-container>
-  </ng-container>
+  <app-user-form
+    (save)="addUser($event)"
+    (close)="closeForm()"
+  ></app-user-form>
 </div>
 
 </div>
